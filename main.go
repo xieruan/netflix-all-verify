@@ -205,7 +205,7 @@ func main() {
 			res = "网络异常"
 		}
 
-		fmt.Fprintln(f, enc.ConvertString(str+res))
+		fmt.Fprintln(f, enc.ConvertString(str+res + "\n"))
 
 		index++
 	}
