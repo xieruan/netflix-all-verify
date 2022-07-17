@@ -183,7 +183,7 @@ func main() {
 		}
 		proxy = server
 		//落地机IP
-		#ip := getIP()
+		//ip := getIP()
 		str := fmt.Sprintf("%d 节点名: %s ", index, node)
 		fmt.Print(str)
 
