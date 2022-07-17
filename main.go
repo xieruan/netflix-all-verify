@@ -18,7 +18,6 @@ import (
 	"github.com/Dreamacro/clash/listener/http" //编码转换
 	"github.com/axgle/mahonia"
 	"github.com/sjlleo/netflix-verify/verify"
-	"github.com/xuri/excelize/v2"
 )
 
 var proxy constant.Proxy
