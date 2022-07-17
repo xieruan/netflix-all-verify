@@ -169,15 +169,6 @@ func main() {
 	if err != nil {
 		fmt.Println("新建netflix.txt失败：", err)
 	}
-
-	//创建excel
-	excel := excelize.NewFile()
-	excel.SetCellValue("Sheet1", "A1", "节点名")
-	excel.SetCellValue("Sheet1", "B1", "ip地址")
-	excel.SetCellValue("Sheet1", "C1", "复用次数")
-	excel.SetCellValue("Sheet1", "D1", "是否解锁")
-	excel.SetCellValue("Sheet1", "E1", "详细说明")
-
 	index := 1
 	nodes := config.Proxies
 
@@ -192,8 +183,8 @@ func main() {
 		}
 		proxy = server
 		//落地机IP
-		ip := getIP()
-		str := fmt.Sprintf("%d   节点名: %s ip地址:%s\n", index, node, ip)
+		#ip := getIP()
+		str := fmt.Sprintf("%d 节点名: %s ", index, node)
 		fmt.Print(str)
 
 		//Netflix检测
@@ -217,18 +208,6 @@ func main() {
 
 		fmt.Fprintln(f, enc.ConvertString(str+res))
 
-		excel.SetCellValue("Sheet1", "A"+strconv.Itoa(index+1), node)
-		excel.SetCellValue("Sheet1", "B"+strconv.Itoa(index+1), ip)
-		if ip != "" {
-			excel.SetCellFormula("Sheet1", "C"+strconv.Itoa(index+1), "= COUNTIF(B:B,B"+strconv.Itoa(index+1)+")")
-		}
-		excel.SetCellValue("Sheet1", "D"+strconv.Itoa(index+1), unblock)
-		excel.SetCellValue("Sheet1", "E"+strconv.Itoa(index+1), res)
-
 		index++
-	}
-
-	if err := excel.SaveAs(exPath + "/Netflix.xlsx"); err != nil {
-		fmt.Println(err)
 	}
 }
