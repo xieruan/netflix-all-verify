@@ -174,7 +174,7 @@ func main() {
 	for node, server := range nodes {
 
 		var (
-			unblock bool
+		//	unblock bool
 			res     string
 		)
 		if server.Type() != constant.Shadowsocks && server.Type() != constant.ShadowsocksR && server.Type() != constant.Snell && server.Type() != constant.Socks5 && server.Type() != constant.Http && server.Type() != constant.Vmess && server.Type() != constant.Trojan {
@@ -192,16 +192,16 @@ func main() {
 		})
 		switch r.Res[1].StatusCode {
 		case 2:
-			unblock = true
+			//unblock = true
 			res = "完整解锁，可观看全部影片，地域信息：" + r.Res[1].CountryName
 		case 1:
-			unblock = false
+			//unblock = false
 			res = "部分解锁，可观看自制剧，地域信息：" + r.Res[1].CountryName
 		case 0:
-			unblock = false
+			//unblock = false
 			res = "完全不支持Netflix"
 		default:
-			unblock = false
+			//unblock = false
 			res = "网络异常"
 		}
 
